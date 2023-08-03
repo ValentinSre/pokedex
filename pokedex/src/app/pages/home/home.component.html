@@ -1,0 +1,98 @@
+<div class="home-container">
+  <h1>Who's that Pokémon ?!</h1>
+
+  <div id="pokedex" style="background-color: rgb(116, 203, 72)">
+    <div id="top">
+      <div id="top-bar">
+        <input type="text" id="search" value="{{ pokemonName }}" />
+        <span id="number">#{{ pokemonNumber }}</span>
+      </div>
+      <div id="poke-image-placeholder">
+        <img src="{{ pokemonImage }}" id="pokemon-image" alt="pokemon-image" />
+      </div>
+    </div>
+    <div id="data">
+      <div class="types-container">
+        <div *ngFor="let type of pokemonTypes" class="type">
+          <img
+            [src]="type.image"
+            [alt]="type.name"
+            tooltipPosition="bottom"
+            style="width: 30px"
+          />
+        </div>
+      </div>
+
+      <h4 id="base-stats" style="color: rgb(116, 203, 72)">Statistiques</h4>
+
+      <div id="stats">
+        <div class="stat-row">
+          <div class="stat-desc">HP</div>
+          <div class="stat-number">{{ pokemonHP }}</div>
+          <div class="stat-bar">
+            <div class="bar-outer">
+              <div class="bar-inner" style="width: {{ pokemonHP }}%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-desc">ATK</div>
+          <div class="stat-number">{{ pokemonAttack }}</div>
+          <div class="stat-bar">
+            <div class="bar-outer">
+              <div class="bar-inner" style="width: {{ pokemonAttack }}%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-desc">DEF</div>
+          <div class="stat-number">{{ pokemonDefense }}</div>
+          <div class="stat-bar">
+            <div class="bar-outer">
+              <div class="bar-inner" style="width: {{ pokemonDefense }}%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-desc">SATK</div>
+          <div class="stat-number">{{ pokemonSpecialAttack }}</div>
+          <div class="stat-bar">
+            <div class="bar-outer">
+              <div
+                class="bar-inner"
+                style="width: {{ pokemonSpecialAttack }}%"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-desc">SDEF</div>
+          <div class="stat-number">{{ pokemonSpecialDefense }}</div>
+          <div class="stat-bar">
+            <div class="bar-outer">
+              <div
+                class="bar-inner"
+                style="width: {{ pokemonSpecialDefense }}%"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-desc">SPD</div>
+          <div class="stat-number">{{ pokemonSpeed }}</div>
+          <div class="stat-bar">
+            <div class="bar-outer">
+              <div class="bar-inner" style="width: {{ pokemonSpeed }}%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    pButton
+    label="Herbes sauvages"
+    (click)="generateRandomPokemon()"
+    style="margin-top: 20px"
+  ></button>
+</div>

@@ -1,0 +1,51 @@
+<div class="pokedex-container">
+  <h1>Pokédex</h1>
+  <p-dataView [value]="filteredPokedexData" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+      <div class="flex flex-column md:flex-row md:justify-content-between">
+        <span class="p-input-icon-left mb-2 md:mb-0">
+          <i class="pi pi-search"></i>
+          <input
+            type="search"
+            pInputText
+            placeholder="Search by Name"
+            (input)="filterData($event)"
+          />
+        </span>
+        <!-- <p-dataViewLayoutOptions></p-dataViewLayoutOptions> -->
+      </div>
+    </ng-template>
+    <ng-template let-pokemon pTemplate="listItem">
+      <div class="col-12">
+        <div class="pokemon-list-item">
+          <img [src]="pokemon.sprites.regular" [alt]="pokemon.name.fr" />
+          <div class="pokemon-list-detail">
+            <div class="pokemon-name">{{ pokemon.name.fr }}</div>
+            <div class="pokemon-description">
+              <span class="pokemon-number"
+                >#{{ pokemon.pokedexId.toString().padStart(4, "0") }}</span
+              >
+            </div>
+            <div class="pokemon-type">
+              <ng-container *ngFor="let type of pokemon.types">
+                <img
+                  [src]="type.image"
+                  [alt]="type.name"
+                  tooltipPosition="bottom"
+                />
+              </ng-container>
+            </div>
+          </div>
+          <div class="pokemon-list-action">
+            <p-button
+              icon="pi pi-eye"
+              label="Détails"
+              (click)="getRandomPokemon()"
+            ></p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <!-- ng-template pour gridItem (si nécessaire) -->
+  </p-dataView>
+</div>
